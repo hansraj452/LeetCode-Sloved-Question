@@ -1,23 +1,19 @@
 class Solution {
 public:
     string removeDuplicates(string s) {
-     std::stack<char> st;
-    
-    for (char c : s) {
-        if (!st.empty() && st.top() == c) {
-            st.pop(); // Remove the adjacent duplicate
-        } else {
-            st.push(c); // Push non-duplicate characters onto the stack
-        }
-    }
-    
-    // Construct the result string from the stack
-    std::string result = "";
-    while (!st.empty()) {
-        result = st.top() + result;
-        st.pop();
-    }
-    
-    return result;
+    string ans;
+		ans.push_back(s[0]);
+
+		for(int i=1 ; i<s.length() ; i++){
+
+			if(!ans.empty() && s[i] == ans.back()){
+				ans.pop_back();
+			}
+			else{
+				ans.push_back(s[i]);
+			}
+		}
+
+		return ans;
     }
 };
